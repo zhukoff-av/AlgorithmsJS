@@ -62,7 +62,6 @@ function regionsBySlashes(grid) {
                 uf.union(north, south - 4 * n)
             }
         }
-
     }
 
 
