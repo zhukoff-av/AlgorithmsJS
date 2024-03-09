@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union Find Visualization</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #visualization {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        div {
+            padding: 10px;
+        }
+
+        #result {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 20px 0 0;
+        }
+
+        .set {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .node {
+            display: inline-block;
+            margin: 2px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .parent {
+            background-color: #ddd;
+        }
+
+        .select {
+            border: darkslategrey;
+        }
+
+        button {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input {
+            width: 35px;
+        }
+
+        #message-container {
+            /* Basic styling */
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+
+            /* Background color and text color */
+            background-color: #f5f5f5;
+            color: #333;
+
+            /* Font styling */
+            font-size: 16px;
+            font-family: sans-serif;
+
+            /* Additional styling options (optional) */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: center; /* Center align the text */
+        }
+
+    </style>
+</head>
+
+<body>
+<h1>Union Find Visualization</h1>
+
+<h2>Initial Set</h2>
+<div id="visualization">
+</div>
+
+<div>
+    <button id="find">Find</button>
+    <input type="text" id="element-value" placeholder="Value">
+</div>
+
+<div>
+    <button id="union">Union</button>
+    <!--    <button id="move">tmp-move</button>-->
+    <input type="text" id="elementUnion1" placeholder="Val1">
+    <input type="text" id="elementUnion2" placeholder="Val2">
+</div>
+
+<h2>Result</h2>
+<div id="result">
+</div>
+
+<div id="message-container"></div>
+
+<script>
+    const visualization = document.getElementById('visualization');
+    const findButton = document.getElementById('find');
+    const unionButton = document.getElementById('union');
+    const elementValueInput = document.getElementById('element-value');
+    const elementUnion1 = document.getElementById('elementUnion1')
+    const elementUnion2 = document.getElementById('elementUnion2')
+    // const moveButton = document.getElementById('move')
+    const result = document.getElementById('result')
+
+    let disjointSets = {};
+    let resultSet = {}
+
+    {
+        for (let i = 0; i < 12; i++) {
+            disjointSets[i] = {parent: i, rank: 0};
+            updateVisualization();
+        }
+    }
+
+    function moveElements(value) {
+        delete disjointSets[value];
+        resultSet[value] = {parent: value, rank: 0};
+        updateVisualization();
+    }
+
+    function find(value) {
+        if (disjointSets[value].parent !== value) {
+            value = find(disjointSets[value].parent)
+        }
+        return value;
+    }
+
+    function union(value1, value2) {
+        const root1 = find(value1);
+        const root2 = find(value2);
+
+        if (root1 === root2) return
+
+        // Union by rank optimization:
+        if (disjointSets[root1].rank < disjointSets[root2].rank) {
+            disjointSets[root1].parent = root2;
+        } else if (disjointSets[root1].rank > disjointSets[root2].rank) {
+            disjointSets[root2].parent = root1;
+        } else {
+            disjointSets[root2].parent = root1;
+            disjointSets[root1].rank++;
+        }
+        updateVisualization();
+    }
+
+    function updateVisualization() {
+        visualization.innerHTML = '';
+        result.innerHTML = '';
+
+        for (const value in disjointSets) {
+            const set = document.createElement('div');
+            set.classList.add('set');
+
+            const node = document.createElement('div');
+            node.classList.add('node');
+            node.textContent = value;
+
+            if (disjointSets[value].parent === value) {
+                node.classList.add('parent');
+            }
+
+            set.appendChild(node);
+            visualization.appendChild(set);
+        }
+
+        for (const value in resultSet) {
+            const set = document.createElement('div');
+            set.classList.add('set');
+
+            const node = document.createElement('div');
+            node.classList.add('node');
+            node.textContent = value;
+
+            if (resultSet[value].parent === value) {
+                node.classList.add('parent');
+            }
+
+            set.appendChild(node);
+            result.appendChild(set);
+        }
+    }
+
+
+    findButton.addEventListener('click', () => {
+        const value = elementValueInput.value;
+        const messageContainer = document.getElementById('message-container');
+        const mc = document.createElement('div');
+
+        if (value) {
+            const root = find(value);
+            if (root) {
+                const rootNode = visualization.querySelector(`.node[textContent="${root}"]`);
+                if (rootNode) {
+                    rootNode.classList.add("red-border")
+                }
+                mc.classList.add('message-container');
+                mc.textContent = `Element ${value} belongs to set with root: ${root}`;
+
+            } else {
+                mc.classList.add('message-container');
+                mc.textContent = `Element ${value} is not present in any set.`;
+            }
+            messageContainer.appendChild(mc)
+        }
+
+    });
+
+    unionButton.addEventListener('click', () => {
+            const value1 = elementUnion1.value;
+            const value2 = elementUnion2.value;
+            const messageContainer = document.getElementById('message-container');
+            const mc = document.createElement('div');
+
+            if (value1 && value2) {
+                union(value1, value2);
+                mc.classList.add('message-container');
+                mc.textContent = `Union ${value1} and ${value2}`;
+            } else {
+                messageContainer.textContent = `Please enter the first element for union.`
+            }
+            messageContainer.appendChild(mc)
+        }
+    );
+
+    // moveButton.addEventListener('click', () => {
+    //     const value = elementValueInput.value;
+    //     if (value) {
+    //         moveElements(value)
+    //         console.log(value)
+    //     }
+    // })
+
+</script>
+</body>
+</html>
