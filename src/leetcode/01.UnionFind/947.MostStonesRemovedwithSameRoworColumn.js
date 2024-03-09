@@ -1,5 +1,5 @@
-
-
+// time complexity: O(n^2)
+// space complexity: O(n)
 const removeStones = (stones) => {
 
     // init

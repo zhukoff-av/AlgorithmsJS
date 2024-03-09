@@ -2,13 +2,15 @@
  * @param {character[][]} grid
  * @return {number}
  */
-var numIslands = function(grid) {
+
+// time complexity: O(m * n * α(m * n)) ≈ O(m * n)
+// space complexity: O(m * n)
+var numIslands = function (grid) {
     const m = grid.length
-    if(m === 0) return 0
+    if (m === 0) return 0
     const n = grid[0].length
 
     const parent = Array(m * n).fill(-1).map((_, index) => index)
-
 
     const find = (node) => {
         if (parent[node] !== node) {
@@ -17,26 +19,26 @@ var numIslands = function(grid) {
         return parent[node];
     }
 
-    const union = (p,q) => {
+    const union = (p, q) => {
         const root1 = find(p)
         const root2 = find(q)
 
-        if(root1 !== root2){
+        if (root1 !== root2) {
             parent[root2] = root1;
         }
     }
 
-    const directions = [[-1,0], [1,0],[0,-1],[0,1]]
+    const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 
-    for(let i =0; i < m; i++){
-        for(let j = 0; j < n; j++){
-            if(grid[i][j] === '1') {
-                for(let [dx,dy] of directions) {
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] === '1') {
+                for (let [dx, dy] of directions) {
                     const newX = i + dx
                     const newY = j + dy
 
-                    if(newX >= 0 && newX < m && newY >= 0 && newY < n){
-                        if(grid[newX][newY] === '1'){
+                    if (newX >= 0 && newX < m && newY >= 0 && newY < n) {
+                        if (grid[newX][newY] === '1') {
                             union(i * n + j, newX * n + newY)
                         }
                     }

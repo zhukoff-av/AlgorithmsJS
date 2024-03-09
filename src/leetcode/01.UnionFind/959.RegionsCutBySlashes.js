@@ -1,3 +1,5 @@
+// time complexity: O(n^2 * 4 * α(n^2)) ≈ O(n^2)
+// space complexity: O(n^2)
 class UnionFind {
     constructor(size) {
         this.parent = Array(size).fill(null).map((_, i) => i); // Each node is its own parent initially
@@ -27,7 +29,6 @@ class UnionFind {
         }
     }
 }
-
 
 function regionsBySlashes(grid) {
     const n = grid.length

@@ -1,3 +1,5 @@
+// time complexity: O(n^2 * α(n^2)) ≈ O(n^2)
+// space complexity: O(n)
 const findProvinces = (isConnected) => {
 
     const n = isConnected.length;
