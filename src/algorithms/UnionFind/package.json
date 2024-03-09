@@ -1,0 +1,14 @@
+{
+  "name": "UnionFind",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "serve"
+  },
+  "keywords": [
+    "html",
+    "css"
+  ],
+  "dependencies": {
+    "serve": "11.2.0"
+  }
+}
