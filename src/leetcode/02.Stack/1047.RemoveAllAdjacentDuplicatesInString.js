@@ -6,14 +6,16 @@ var removeDuplicates = function (s) {
 
     const stack = []
     for (let letter of s) {
+
         stack[stack.length - 1] === letter ? stack.pop() : stack.push(letter)
     }
     return stack.join('')
 };
 
+removeDuplicates("abbaca")
 
-console.log(removeDuplicates("abbaca"))
-console.log(removeDuplicates("azxxzy"))
+// console.log(removeDuplicates("abbaca"))
+// console.log(removeDuplicates("azxxzy"))
 
 
 //
