@@ -2,15 +2,24 @@
     display: flex;
     justify-content: space-around;
     margin: 50px;
+    max-width: 80%;
 }
 
 .controls {
     margin: 20px
 }
 
-#stack, #queue {
+#stack {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+#queue {
+    display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 10px;
     margin: 20px;
