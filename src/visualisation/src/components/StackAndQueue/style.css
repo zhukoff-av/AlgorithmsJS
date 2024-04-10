@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px;
+}
+
+.controls {
+    margin: 20px
+}
+
+#stack, #queue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+.data-item {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    text-align: center;
+    width: 80px;
+    transition: transform 0.3s ease-in-out;
+}
+
+button {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="text"] {
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Slightly rounded corners */
+    padding: 10px 15px; /* Internal spacing */
+    width: 250px; /* Adjust width as needed */
+}
