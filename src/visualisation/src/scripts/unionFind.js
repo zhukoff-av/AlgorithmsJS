@@ -27,6 +27,10 @@ function find(value) {
     if (disjointSets[value].parent !== value) {
         value = find(disjointSets[value].parent)
     }
+    const element = document.getElementById(value);
+    if (element) {
+        element.classList.add('found');
+    }
     return value;
 }
 

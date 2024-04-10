@@ -36,6 +36,12 @@ div {
     border-radius: 5px;
 }
 
+.found{
+    background-color: #f5f5f5;
+    border: 1px solid purple;
+    border-radius: 5px;
+}
+
 .parent {
     background-color: #ddd;
 }
