@@ -30,6 +30,11 @@ function find(value) {
     const element = document.getElementById(value);
     if (element) {
         element.classList.add('found');
+        // Highlight the root as well
+        const rootElement = document.getElementById(find(value));
+        if (rootElement) {
+            rootElement.classList.add('found');
+        }
     }
     return value;
 }
@@ -97,11 +102,14 @@ findButton.addEventListener('click', () => {
 
     if (value) {
         const root = find(value);
+
         if (root) {
-            const rootNode = visualization.querySelector(`.node[textContent="${root}"]`);
-            if (rootNode) {
-                rootNode.classList.add("red-border")
-            }
+            const foundNode = visualization.childNodes[root]
+            foundNode.classList.add('found')
+            setTimeout(() => {
+                foundNode.classList.remove('found');
+            }, 1000);
+
             mc.classList.add('message-container');
             mc.textContent = `Element ${value} belongs to set with root: ${root}`;
 
@@ -124,6 +132,18 @@ unionButton.addEventListener('click', () => {
             union(value1, value2);
             mc.classList.add('message-container');
             mc.textContent = `Union ${value1} and ${value2}`;
+            const item1 = visualization.childNodes[value1]
+            const item2 = visualization.childNodes[value2]
+            item1.classList.add('united')
+            setTimeout(() => {
+                item2.classList.add('united')
+            }, 500)
+
+            setTimeout(() => {
+                item1.classList.remove('united')
+                item2.classList.remove('united')
+            }, 1500)
+
         } else {
             messageContainer.textContent = `Please enter the first element for union.`
         }

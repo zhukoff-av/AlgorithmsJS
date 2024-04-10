@@ -36,10 +36,14 @@ div {
     border-radius: 5px;
 }
 
-.found{
-    background-color: #f5f5f5;
-    border: 1px solid purple;
-    border-radius: 5px;
+.found {
+    background-color: lightseagreen;
+    transition: transform 0.3s ease-in-out;
+}
+
+.united {
+    background-color: slategrey;
+    transition: transform 0.3s ease-in-out;
 }
 
 .parent {
@@ -78,4 +82,8 @@ input {
     /* Additional styling options (optional) */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     text-align: center; /* Center align the text */
+}
+
+.highlight {
+    background-color: forestgreen;
 }
