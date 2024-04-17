@@ -87,19 +87,14 @@ async function shellSort(arr) {
                 arr[j] = arr[j - gap];
                 j -= gap;
             }
-
             arr[j] = temp;
             updateVisual(arr, arr[i], arr[j + 1]);
             await sleep(100);
-
         }
-
         // Reduce the gap size for the next iteration
         gap = Math.floor(gap / 2);
     }
-
     // return arr;
-
 }
 
 function updateVisual(arr, index1, index2) {
@@ -125,17 +120,46 @@ function generateRandomArray(length, max) {
     return arr;
 }
 
-async function startSelectionSort() {
-    const arr = generateRandomArray(33, 88); // Generate a random array
-    await selectionSort(arr); // Sort the array
+function generateSortedArray(length) {
+    const arr = []
+    for (let i = 0; i < length; i++) {
+        arr[i] = i
+    }
+    return arr
 }
 
-async function startInsertionSort() {
-    const arr = generateRandomArray(33, 88); // Generate a random array
-    await selectionSort(arr); // Sort the array
+async function shuffle(arr) {
+
+    let currentIndex = arr.length
+    while (currentIndex !== 0) {
+        let randomIndex = Math.floor(Math.random() * currentIndex)
+        currentIndex--
+        // swap
+        [arr[currentIndex], arr[randomIndex]] = [arr[randomIndex], arr[currentIndex]]
+        updateVisual(arr, arr[currentIndex], arr[randomIndex])
+        await sleep(150)
+    }
+
 }
 
-async function startShellSort() {
-    const arr = generateRandomArray(33, 88); // Generate a random array
-    await shellSort(arr); // Sort the array
+async function sortArray(sortingAlgorithm) {
+    const arr = generateRandomArray(19, 55)
+    try {
+        if (sortingAlgorithm === 'selection') {
+            await selectionSort(arr);
+        } else if (sortingAlgorithm === 'insertion') {
+            await insertionSort(arr);
+        } else if (sortingAlgorithm === 'shell') {
+            await shellSort(arr);
+        } else {
+            throw new Error('Invalid sorting algorithm');
+        }
+    } catch (error) {
+        console.error('Sorting error:', error);
+    }
+}
+
+async function shuffleArray() {
+    const arr = generateSortedArray(33)
+    await shuffle(arr)
 }
