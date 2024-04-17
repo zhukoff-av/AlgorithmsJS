@@ -2,7 +2,7 @@
   "name": "UnionFind",
   "version": "1.0.0",
   "scripts": {
-    "start": "src/components/UnionFind/node_modules/.bin/serve"
+    "start": "node_modules/.bin/serve"
   },
   "keywords": [
     "html",
