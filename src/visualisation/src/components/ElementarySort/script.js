@@ -2,7 +2,6 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
 /**
  * Selection sort
  In-Place Sorting: Selection sort modifies the original array directly.
@@ -128,8 +127,54 @@ function generateSortedArray(length) {
     return arr
 }
 
-async function shuffle(arr) {
+async function mergeSort(arr, start = 0) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    const mid = Math.floor(arr.length / 2);
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid);
+    const sortedLeft = await mergeSort(left, start);
+    const sortedRight = await mergeSort(right, start + mid);
 
+    return await merge(sortedLeft, sortedRight, start);
+}
+
+async function merge(left, right, start) {
+    const result = [];
+    let leftIndex = 0, rightIndex = 0;
+    let outputIndex = start;
+
+    while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+            result.push(left[leftIndex]);
+            leftIndex++;
+        } else {
+            result.push(right[rightIndex]);
+            rightIndex++;
+        }
+        // Visual update
+        updateVisual(result.concat(left.slice(leftIndex), right.slice(rightIndex)), outputIndex++);
+        await sleep(100);  // Delay for visualization
+    }
+
+    while (leftIndex < left.length) {
+        result.push(left[leftIndex]);
+        updateVisual(result.concat(left.slice(leftIndex), right.slice(rightIndex)), outputIndex++);
+        await sleep(100);
+        leftIndex++;
+    }
+    while (rightIndex < right.length) {
+        result.push(right[rightIndex]);
+        // updateVisual(result.concat(left.slice(leftIndex), right.slice(rightIndex)), outputIndex++);
+        await sleep(100);
+        rightIndex++;
+    }
+
+    return result;
+}
+
+async function shuffle(arr) {
     let currentIndex = arr.length
     while (currentIndex !== 0) {
         let randomIndex = Math.floor(Math.random() * currentIndex)
@@ -139,7 +184,6 @@ async function shuffle(arr) {
         updateVisual(arr, arr[currentIndex], arr[randomIndex])
         await sleep(150)
     }
-
 }
 
 async function sortArray(sortingAlgorithm) {
@@ -151,6 +195,8 @@ async function sortArray(sortingAlgorithm) {
             await insertionSort(arr);
         } else if (sortingAlgorithm === 'shell') {
             await shellSort(arr);
+        } else if (sortingAlgorithm === 'merge') {
+            await mergeSort(arr)
         } else {
             throw new Error('Invalid sorting algorithm');
         }
