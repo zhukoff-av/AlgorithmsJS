@@ -15,6 +15,14 @@ class MinHeap {
         return 2 * i + 2;
     }
 
+    peek() {
+        return this.heap[0]
+    }
+
+    size(){
+        return this.heap.length
+    }
+
     swap(i, j) {
         const temp = this.heap[i];
         this.heap[i] = this.heap[j];
@@ -65,8 +73,10 @@ minHeap.insert(3);
 minHeap.insert(8);
 minHeap.insert(7);
 
-console.log(minHeap.extractMin()); // Outputs: 3
-console.log(minHeap.extractMin()); // Outputs: 5
-console.log(minHeap.extractMin()); // Outputs: 7
-console.log(minHeap.extractMin()); // Outputs: 8
-console.log(minHeap.extractMin()); // Outputs: 10
+console.log(minHeap.size())
+
+// console.log(minHeap.extractMin()); // Outputs: 3
+// console.log(minHeap.extractMin()); // Outputs: 5
+// console.log(minHeap.extractMin()); // Outputs: 7
+// console.log(minHeap.extractMin()); // Outputs: 8
+// console.log(minHeap.extractMin()); // Outputs: 10
