@@ -16,10 +16,11 @@ class MinHeap {
     }
 
     peek() {
+        if (!this.heap.length) return null
         return this.heap[0]
     }
 
-    size(){
+    size() {
         return this.heap.length
     }
 
@@ -73,7 +74,7 @@ minHeap.insert(3);
 minHeap.insert(8);
 minHeap.insert(7);
 
-console.log(minHeap.size())
+// console.log(minHeap.heap)
 
 // console.log(minHeap.extractMin()); // Outputs: 3
 // console.log(minHeap.extractMin()); // Outputs: 5
