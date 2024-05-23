@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+    <!--    <link rel="stylesheet" href="styles.css">-->
+    <style>
+        .calculator {
+            width: 200px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        input#display {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            font-size: 16px;
+        }
+
+        .buttons button {
+            width: 44px;
+            height: 44px;
+            margin: 2px;
+            font-size: 16px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+    </style>
+</head>
+<body>
+<div class="calculator">
+    <input type="text" id="display">
+    <div class="buttons">
+        <button onclick="press('1')">1</button>
+        <button onclick="press('2')">2</button>
+        <button onclick="press('3')">3</button>
+        <button onclick="press('+')">+</button>
+        <button onclick="press('4')">4</button>
+        <button onclick="press('5')">5</button>
+        <button onclick="press('6')">6</button>
+        <button onclick="press('-')">-</button>
+        <button onclick="press('7')">7</button>
+        <button onclick="press('8')">8</button>
+        <button onclick="press('9')">9</button>
+        <button onclick="press('*')">*</button>
+        <button onclick="press('0')">0</button>
+        <button onclick="press('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="press('/')">/</button>
+        <button onclick="clearDisplay()">C</button>
+    </div>
+</div>
+<!--<script src="script.js"></script>-->
+<script>
+    let display = document.getElementById('display');
+
+    function press(num) {
+        display.value += num;
+    }
+
+    function calculate() {
+        try {
+            display.value = eval(display.value);
+        } catch (e) {
+            display.value = 'Error';
+        }
+    }
+
+    function clearDisplay() {
+        display.value = '';
+    }
+
+</script>
+</body>
+</html>
