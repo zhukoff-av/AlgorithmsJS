@@ -12,6 +12,7 @@ const longestSubarray = (nums, limit) => {
 
     for (let right = 0; right < nums.length; right++) {
 
+        console.log(maxQ)
         while (maxQ.length && nums[maxQ[maxQ.length - 1]] <= nums[right]) {
             maxQ.pop()
         }
@@ -28,12 +29,9 @@ const longestSubarray = (nums, limit) => {
             if (minQ[0] === left) minQ.shift()
             left++
         }
-
         maxLength = Math.max(maxLength, right - left + 1)
-
     }
-
-    console.log(maxLength)
+    // console.log(maxLength)
     return maxLength
 
 };
