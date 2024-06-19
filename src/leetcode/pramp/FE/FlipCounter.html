@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flip Counter</title>
+    <!--    <link rel="stylesheet" href="styles.css">-->
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .flip-counter {
+            display: flex;
+            font-size: 48px;
+            overflow: hidden;
+            background: #333;
+            color: #fff;
+            border-radius: 10px;
+        }
+
+        .digit {
+            padding: 20px;
+            width: 40px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            margin: 5px;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease;
+        }
+
+    </style>
+</head>
+<body>
+<div class="flip-counter">
+    <div class="digit" id="tens">0</div>
+    <div class="digit" id="units">0</div>
+</div>
+<!--<script src="script.js"></script>-->
+
+<script>
+    let tens = document.getElementById('tens');
+    let units = document.getElementById('units');
+    let count = 0;
+
+    function updateDisplay() {
+        tens.textContent = Math.floor(count / 10);
+        units.textContent = count % 10;
+        flipAnimation(units); // Apply flip animation to units every increment
+        if (count % 10 === 0) {
+            flipAnimation(tens); // Apply flip animation to tens when it changes
+        }
+        count = (count + 1) % 60;
+    }
+
+    function flipAnimation(element) {
+        element.style.transform = 'rotateX(90deg)';
+        element.style.opacity = '0';
+        setTimeout(() => {
+            element.style.transform = '';
+            element.style.opacity = '1';
+        }, 300);
+    }
+
+    setInterval(updateDisplay, 1000); // Update the counter every second
+
+</script>
+</body>
+</html>
