@@ -4,15 +4,15 @@
 const sortCharts = (str) => {
 
     // Initialize a Map to Count Frequencies
-    let map = new Map()
+    let map = {}
 
     // Count the Frequency of Each Character
     for (let ch of str) {
-        map.set(ch, (map.get(ch) || 0) + 1)
+        map[ch] = (map[ch] || 0) + 1
     }
 
     // Convert Map Entries to an Array
-    const pq = Array.from(map.entries())
+    const pq = Object.entries(map)
 
     // Sort the Array by Frequency:
     pq.sort((a, b) => b[1] - a[1])

@@ -7,7 +7,7 @@ const findDiagonalOrder = (nums) => {
     let result = []
 
     for (let i = 0; i < nums.length; i++) {
-        for (let j = 0; j < nums[0].length; j++) {
+        for (let j = 0; j < nums[i].length; j++) {
             const num = nums[i][j]
             if (!num) continue
             const diagonal = result[i + j]
