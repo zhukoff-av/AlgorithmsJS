@@ -2,7 +2,6 @@ class PriorityQueue {
     constructor() {
         this.items = [];
     }
-
     enqueue(element, priority) {
         const queueElement = { element, priority };
         let added = false;
@@ -27,7 +26,6 @@ class PriorityQueue {
             alert("Queue is empty!");
             return;
         }
-
         this.items.shift();
         this.displayQueue();
     }
