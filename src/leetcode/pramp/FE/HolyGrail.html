@@ -1,16 +1,73 @@
-<!--Holy Grail-->
-<!--In web design, a “holy grail” refers to a web page layout which has multiple,
-equal height columns that are defined with style sheets.-->
-
-<!--Build this layout, and describe the tradeoffs you’ve made in designing it.-->
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 
+    <style>
+        .HolyGrail {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .HolyGrail-body {
+            display: flex;
+            flex: 1;
+        }
+
+        .HolyGrail-content {
+            flex: 1;
+        }
+
+        .HolyGrail-nav, .HolyGrail-ads {
+            /* 12em is the width of the columns */
+            flex: 0 0 12em;
+        }
+
+        .HolyGrail-nav {
+            /* put the nav on the left */
+            order: -1;
+        }
+
+        .HolyGrail,
+        .HolyGrail-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .HolyGrail-nav {
+            order: -1;
+        }
+
+        @media (min-width: 768px) {
+            .HolyGrail-body {
+                flex-direction: row;
+                flex: 1;
+            }
+
+            .HolyGrail-content {
+                flex: 1;
+            }
+
+            .HolyGrail-nav, .HolyGrail-ads {
+                /* 12em is the width of the columns */
+                flex: 0 0 12em;
+            }
+        }
+    </style>
+</head>
+<body class="HolyGrail">
+<header>…</header>
+<div class="HolyGrail-body">
+    <main class="HolyGrail-content">…</main>
+    <nav class="HolyGrail-nav">…</nav>
+    <aside class="HolyGrail-ads">…</aside>
+</div>
+<footer>…</footer>
 </body>
 </html>
+

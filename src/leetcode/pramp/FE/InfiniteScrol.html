@@ -112,6 +112,29 @@
         if (getScrollTop() < getDocumentHeight() - window.innerHeight) return;
         loadNextBatch();
     };
+
+
+    // Second Solution - short - simplify
+    // function loadImages() {
+    //     const apiUrl = 'http://api.adorable.io/avatars/';
+    //     let index = 0;
+    //     const container = document.getElementById('image-container');
+    //
+    //     function appendImage() {
+    //         const img = document.createElement('img');
+    //         img.src = `${apiUrl}${++index}`;
+    //         container.appendChild(img);
+    //     }
+    //
+    //     window.addEventListener('scroll', () => {
+    //         const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    //         if (scrollTop + clientHeight >= scrollHeight - 5) {
+    //             appendImage();
+    //         }
+    //     });
+    // }
 </script>
 </body>
 </html>
+
+
