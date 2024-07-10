@@ -1,4 +1,7 @@
 // Javascript function to search a given key in a given BST
+// Time complexity: O(h), where h is the height of the BST.
+// Auxiliary Space: O(h), where h is the height of the BST.
+// This is because the maximum amount of space needed to store the recursion stack would be h.
 
 class Node {
     constructor(key) {
@@ -71,3 +74,5 @@ if (search(root, key) === null) {
 } else {
     console.log(key + " found");
 }
+
+console.log(root)
