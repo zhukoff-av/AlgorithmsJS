@@ -19,6 +19,23 @@ console.log(square([-4, -1, 0, 3, 10]))
  4. Move the pointer corresponding to the larger value inward.
  Repeat until all elements are processed.
  */
-const sortedArr = (arr) => {
+const sortedArr = (nums) => {
+    let result = new Array(nums.length)
+    let left = 0
+    let right = nums.length - 1
+    let index = nums.length - 1
 
+    while (left <= right) {
+        if (Math.abs(nums[left]) > Math.abs(nums[right])) {
+            result[index] = nums[left] * nums[left]
+            left++
+        } else {
+            result[index] = nums[right] * nums[right]
+            right--
+        }
+        index--
+    }
+    return result
 }
+
+console.log(sortedArr([-4, -1, 0, 3, 10]))
