@@ -6,7 +6,6 @@
 
 
 const sum = (nums) => {
-
     let result = []
     let acc = 0
 
@@ -15,7 +14,6 @@ const sum = (nums) => {
 
         result.push(acc)
     }
-
     return result
 }
 
