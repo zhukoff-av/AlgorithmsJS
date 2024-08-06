@@ -33,7 +33,6 @@ const findProvinces = (isConnected) => {
                 union(i, j)
             }
         }
-
     }
 
     // count province
