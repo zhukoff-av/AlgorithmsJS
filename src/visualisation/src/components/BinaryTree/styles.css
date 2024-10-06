@@ -1,0 +1,33 @@
+/* styles.css */
+#treeDisplay {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+    height: 600px;
+    width: 100%;
+    position: relative;
+}
+
+.node {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 5px;
+    position: absolute;
+}
+
+.line {
+    position: absolute;
+    width: 2px;
+    background-color: black;
+    transform: translateX(-50%); /* Center the line on the calculated position */
+}
+
+.found {
+    border-color: red;
+}
