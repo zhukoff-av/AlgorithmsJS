@@ -22,7 +22,7 @@ function rotateImage(a) {
         }
 
     }
-    console.log(res)
+    return res
 }
 
 rotateImage(
