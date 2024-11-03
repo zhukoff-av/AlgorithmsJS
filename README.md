@@ -40,19 +40,18 @@ Installation
 
 1.	Clone the repository:
 
-    git clone https://github.com/zhukoff-av/AlgorithmsJS.git
-    cd AlgorithmsJS
+    ```git clone https://github.com/zhukoff-av/AlgorithmsJS.git```
+    ```cd AlgorithmsJS```
 
 
 2.	Install dependencies:
 
-    npm install
+    ```npm install```
 
 
 3.	Run tests to verify the algorithms:
 
-    npm test
-
+    ```npm test```
 
 
 Usage
@@ -71,7 +70,7 @@ Example usage of an algorithm:
 Available Algorithms
 
 Sorting
-
+	
 	•	Bubble Sort
 	•	Insertion Sort
 	•	Merge Sort
