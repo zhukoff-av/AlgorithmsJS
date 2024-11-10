@@ -345,5 +345,7 @@ console.log(mergeAndSortArrays([5, 5, 5], [5, 5]));
 // Expected output: [5, 5, 5, 5, 5]
 
 // Test case 10: Large array sizes
-console.log(mergeAndSortArrays(Array.from({length: 1000}, (_, i) => i), Array.from({length: 1000}, (_, i) => i * 2)));
+console.log(mergeAndSortArrays(
+    Array.from({length: 1000}, (_, i) => i),
+    Array.from({length: 1000}, (_, i) => i * 2)));
 // Expected output: Array of 2000 elements, sorted in ascending order
