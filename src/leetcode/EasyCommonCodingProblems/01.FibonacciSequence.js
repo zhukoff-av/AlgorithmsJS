@@ -6,7 +6,10 @@ function fibonacci(n) {
     return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
-console.log(fibonacci(8))
+// const start = performance.now();
+// console.log(fibonacci(45))
+// const end = performance.now()
+// console.log(`Time taken: ${end - start}ms`)
 
 
 // How to improve? -> utilize memoization
@@ -22,4 +25,7 @@ function fibonacciMemo(n, memo = {}) {
     return memo[n];
 }
 
-console.log(fibonacciMemo(8))
+const start = performance.now();
+console.log(fibonacciMemo(45))
+const end = performance.now()
+console.log(`Time taken: ${end - start}ms`)
