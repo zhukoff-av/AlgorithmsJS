@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>TODO List</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<h1 class="visually-hidden">TODO List</h1>
+<ul class="todo-list">
+
+</ul>
+<p class="empty-tasks">All tasks have been completed. There are no new tasks.</p>
+<form class="add-form" method="post">
+    <input class="add-form-input" type="text" aria-label="Task description"
+           placeholder="For example, buying an elephant" required>
+    <button class="add-form-button" type="submit">Add a new Task</button>
+</form>
+
+<template id="task-template">
+    <li class="todo-list-item">
+        <label>
+            <input type="checkbox" class="todo-list-input">
+            <span></span>
+        </label>
+    </li>
+</template>
+<script src="script.js"></script>
+</body>
+</html>
