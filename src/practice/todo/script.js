@@ -1,3 +1,28 @@
+/**
+ * This script manages a TODO list application.
+ *
+ * Features:
+ * - Adds new tasks to the list.
+ * - Removes tasks from the list when they are checked off.
+ * - Displays a message when all tasks are completed.
+ *
+ * Elements:
+ * - `list`: The unordered list (`<ul>`) that contains the tasks.
+ * - `items`: The list items (`<li>`) within the `list`.
+ * - `emptyListMessage`: The message displayed when there are no tasks.
+ * - `newItemForm`: The form used to add new tasks.
+ * - `newItemTitle`: The input field for the new task description.
+ * - `taskTemplate`: The template for a new task item.
+ * - `newItemTemplate`: The cloned template for a new task item.
+ * - `input`: The input field for the new task description.
+ *
+ * Functions:
+ * - `toggleEmptyListMessage`: Shows or hides the empty list message based on the number of tasks.
+ * - `addCheckHandler`: Adds an event listener to a task item to remove it when checked off.
+ *
+ * Event Listeners:
+ * - `submit` event on `newItemForm`: Adds a new task to the list.
+ */
 const list = document.querySelector('.todo-list');
 const items = list.children;
 const emptyListMessage = document.querySelector('.empty-tasks');
