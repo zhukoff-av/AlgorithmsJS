@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Чат</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<section class="chat">
+    <h1 class="visually-hidden">Чат</h1>
+
+    <div class="chat-content">
+
+    </div>
+
+    <form class="chat-form" method="post">
+        <input class="chat-form-input" type="text" aria-label="Your message" placeholder="Write something" required>
+        <button class="chat-form-button" type="submit">Send</button>
+    </form>
+</section>
+
+<template id="message-template">
+    <div class="chat-message" tabindex="0">
+        <span class="chat-message-name">Unidentified raccoon</span>
+        <p class="chat-message-text"></p>
+        <button class="chat-message-button" type="button">Delete</button>
+    </div>
+</template>
+
+<script src="script.js"></script>
+</body>
+</html>

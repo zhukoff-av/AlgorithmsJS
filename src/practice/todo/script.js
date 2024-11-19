@@ -55,6 +55,7 @@ newItemForm.addEventListener('submit', function (evt) {
     const taskText = newItemTitle.value;
     const task = newItemTemplate.cloneNode(true);
     const taskDescription = task.querySelector('span');
+
     taskDescription.textContent = taskText;
     addCheckHandler(task)
     list.appendChild(task);
