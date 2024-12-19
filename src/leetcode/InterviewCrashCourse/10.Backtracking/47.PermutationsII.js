@@ -24,3 +24,8 @@ var permuteUnique = function (nums) {
     backtrack([])
     return result;
 };
+
+// Todo Fix the case
+// [1,1,2] - failed
+// expected [[1,1,2],[1,2,1],[2,1,1]]
+
